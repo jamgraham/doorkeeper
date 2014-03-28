@@ -1,5 +1,6 @@
 require 'doorkeeper/request/authorization_code'
 require 'doorkeeper/request/client_credentials'
+require 'doorkeeper/request/assertion'
 require 'doorkeeper/request/code'
 require 'doorkeeper/request/password'
 require 'doorkeeper/request/refresh_token'
@@ -16,7 +17,7 @@ module Doorkeeper
     end
 
     def token_strategy(strategy)
-      get_strategy strategy, %w[password client_credentials authorization_code refresh_token]
+      get_strategy strategy, %w[password client_credentials authorization_code refresh_token assertion]
     rescue NameError
       raise Errors::InvalidTokenStrategy
     end

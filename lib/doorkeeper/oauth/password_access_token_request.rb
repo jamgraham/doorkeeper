@@ -16,6 +16,7 @@ module Doorkeeper::OAuth
       @credentials     = credentials
       @original_scopes = parameters[:scope]
 
+      credentials = credentials.application if credentials && credentials.class == Doorkeeper::OAuth::Client
       @client = Doorkeeper::Application.authenticate(credentials.uid, credentials.secret) if credentials
     end
 
